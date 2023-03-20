@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zxb.mapper.ItemsMapper">
+  <resultMap id="BaseResultMap" type="com.zxb.entity.Items">
+    <!--@mbg.generated-->
+    <!--@Table items-->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="Items_name" jdbcType="VARCHAR" property="itemsName" />
+    <result column="Items_url" jdbcType="VARCHAR" property="itemsUrl" />
+    <result column="Items_price" jdbcType="DECIMAL" property="itemsPrice" />
+    <result column="Items_count" jdbcType="VARCHAR" property="itemsCount" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, Items_name, Items_url, Items_price, Items_count
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from items
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <!--@mbg.generated-->
+    delete from items
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.zxb.entity.Items">
+    <!--@mbg.generated-->
+    insert into items (id, Items_name, Items_url, 
+      Items_price, Items_count)
+    values (#{id,jdbcType=INTEGER}, #{itemsName,jdbcType=VARCHAR}, #{itemsUrl,jdbcType=VARCHAR}, 
+      #{itemsPrice,jdbcType=DECIMAL}, #{itemsCount,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.zxb.entity.Items">
+    <!--@mbg.generated-->
+    insert into items
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="itemsName != null">
+        Items_name,
+      </if>
+      <if test="itemsUrl != null">
+        Items_url,
+      </if>
+      <if test="itemsPrice != null">
+        Items_price,
+      </if>
+      <if test="itemsCount != null">
+        Items_count,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="itemsName != null">
+        #{itemsName,jdbcType=VARCHAR},
+      </if>
+      <if test="itemsUrl != null">
+        #{itemsUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="itemsPrice != null">
+        #{itemsPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="itemsCount != null">
+        #{itemsCount,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zxb.entity.Items">
+    <!--@mbg.generated-->
+    update items
+    <set>
+      <if test="itemsName != null">
+        Items_name = #{itemsName,jdbcType=VARCHAR},
+      </if>
+      <if test="itemsUrl != null">
+        Items_url = #{itemsUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="itemsPrice != null">
+        Items_price = #{itemsPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="itemsCount != null">
+        Items_count = #{itemsCount,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zxb.entity.Items">
+    <!--@mbg.generated-->
+    update items
+    set Items_name = #{itemsName,jdbcType=VARCHAR},
+      Items_url = #{itemsUrl,jdbcType=VARCHAR},
+      Items_price = #{itemsPrice,jdbcType=DECIMAL},
+      Items_count = #{itemsCount,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+</mapper>
